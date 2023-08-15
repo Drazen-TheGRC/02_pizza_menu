@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,19 +49,63 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
-      <h1>Hello React 18</h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
+}
+
+function Header() {
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
+}
+
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+
+  // if (hour >= openHour && hour <= closeHour) {
+  //   alert("We're currently open!");
+  // } else {
+  //   alert("Sorry we're currently closed");
+  // }
+
+  if (hour >= openHour && hour <= closeHour) {
+    console.log("We are currently opened!");
+  } else {
+    console.log("Sorry We are currently closed!");
+  }
+
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}We are currently opened
+    </footer>
+  );
+  //return React.createElement(`footer`, null, "We're currently opened");
 }
 
 function Pizza() {
   return (
     <div>
-      <h2>Pizza Prosciutto</h2>
+      <h3>Pizza Prosciutto</h3>
       <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
       <img src="pizzas/prosciutto.jpg" alt="Pizza Prosciutto" />
     </div>
